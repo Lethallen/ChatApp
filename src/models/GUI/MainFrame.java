@@ -164,7 +164,7 @@ public class MainFrame extends JFrame {
 
         JPanel panel = new JPanel();
         JTable tblLoggedUsers = new JTable();
-        LoggedUsersTableModel loggedUsersTableModel = new LoggedUsersTableModel(chatClient);
+        loggedUsersTableModel = new LoggedUsersTableModel(chatClient);
         tblLoggedUsers.setModel(loggedUsersTableModel);
         JScrollPane scrollPane = new JScrollPane(tblLoggedUsers);
         scrollPane.setPreferredSize(new Dimension(250,500));

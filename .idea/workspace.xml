@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b30e4919-47f4-4023-868d-dc2f853db999" name="Changes" comment="just to be sure">
-      <change afterPath="$PROJECT_DIR$/src/models/GUI/LoggedUsersTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    <list default="true" id="b30e4919-47f4-4023-868d-dc2f853db999" name="Changes" comment="f">
       <change beforePath="$PROJECT_DIR$/src/models/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/chatClients/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/chatClients/ChatClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/chatClients/InMemoryChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/chatClients/InMemoryChatClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +58,7 @@
       <updated>1665403698332</updated>
       <workItem from="1665403699737" duration="3052000" />
       <workItem from="1665585356828" duration="27000" />
-      <workItem from="1666612318329" duration="4774000" />
+      <workItem from="1666612318329" duration="5322000" />
     </task>
     <task id="LOCAL-00001" summary="basic chatapp with window :)">
       <created>1665406691346</created>
@@ -80,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666612336887</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="f">
+      <created>1666617288758</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1666617288758</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,6 +101,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="basic chatapp with window :)" />
     <MESSAGE value="just to be sure" />
-    <option name="LAST_COMMIT_MESSAGE" value="just to be sure" />
+    <MESSAGE value="f" />
+    <option name="LAST_COMMIT_MESSAGE" value="f" />
   </component>
 </project>
