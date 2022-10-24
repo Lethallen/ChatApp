@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b30e4919-47f4-4023-868d-dc2f853db999" name="Changes" comment="basic chatapp with window :)">
+    <list default="true" id="b30e4919-47f4-4023-868d-dc2f853db999" name="Changes" comment="just to be sure">
+      <change afterPath="$PROJECT_DIR$/src/models/GUI/LoggedUsersTableModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/GUI/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/chatClients/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/chatClients/ChatClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/chatClients/InMemoryChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/chatClients/InMemoryChatClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,13 +37,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "U:/ChatApp"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -57,6 +64,7 @@
       <updated>1665403698332</updated>
       <workItem from="1665403699737" duration="3052000" />
       <workItem from="1665585356828" duration="27000" />
+      <workItem from="1666612318329" duration="4774000" />
     </task>
     <task id="LOCAL-00001" summary="basic chatapp with window :)">
       <created>1665406691346</created>
@@ -65,7 +73,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665406691346</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="just to be sure">
+      <created>1666612336887</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666612336887</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -84,6 +99,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="basic chatapp with window :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic chatapp with window :)" />
+    <MESSAGE value="just to be sure" />
+    <option name="LAST_COMMIT_MESSAGE" value="just to be sure" />
   </component>
 </project>
