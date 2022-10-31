@@ -152,7 +152,7 @@ public class MainFrame extends JFrame {
     private JPanel initLoggedUsers()
     {
         /*
-        Object[][] data = new Object[][]{
+        Object[][] data = new Object[][]{    plnění tabulky fixníma hodnotama pro testing, actually to nechci používat
                 {"O,O", "1,1"},
                 {"2,2", "3,3"}
         };

@@ -1,16 +1,22 @@
 package models;
 
+import com.google.gson.annotations.Expose;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Message {
+
+
     public static final int USER_LOGGED_IN = 1;
     public static final int USER_LOGGED_OUT = 2;
     public static final String AUTHOR_SYSTEM = "System";
 
-
+    @Expose(serialize = true, deserialize = true)
     private String username;
+    @Expose(serialize = true, deserialize = true)
     private String text;
+    @Expose(serialize = false, deserialize = false)
     private LocalDateTime created;
 
     public Message(String username, String text) {

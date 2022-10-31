@@ -16,9 +16,9 @@ public class InMemoryChatClient implements ChatClient {
 
     public InMemoryChatClient(){
         loggedUsers = new ArrayList<>();
-        messages = new ArrayList<>();
+    messages = new ArrayList<>();
 
-    }
+}
 
 
     @Override
@@ -31,28 +31,28 @@ public class InMemoryChatClient implements ChatClient {
 
     @Override
     public void login(String userName) {
-    loggedUser = userName;
-    loggedUsers.add(userName);
-    addSystemMessage(Message.USER_LOGGED_IN, userName);
-    raiseEventLoggedUsersChanged();
+        loggedUser = userName;
+        loggedUsers.add(userName);
+        addSystemMessage(Message.USER_LOGGED_IN, userName);
+        raiseEventLoggedUsersChanged();
 
     }
 
     @Override
     public void logout() {
         addSystemMessage(Message.USER_LOGGED_OUT, loggedUser);
-    loggedUsers.remove(loggedUser);
-    loggedUser = null;
-    System.out.println("User logged out");
-    raiseEventLoggedUsersChanged();
+        loggedUsers.remove(loggedUser);
+        loggedUser = null;
+        System.out.println("User logged out");
+        raiseEventLoggedUsersChanged();
 
 
     }
 
     @Override
     public boolean isAuthenticated() {
-       boolean isAuthenticated = loggedUser != null;
-       System.out.print("User logged: " + isAuthenticated);
+        boolean isAuthenticated = loggedUser != null;
+        System.out.print("User logged: " + isAuthenticated);
 
         return isAuthenticated;
 
