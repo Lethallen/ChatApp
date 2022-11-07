@@ -7,6 +7,7 @@ import models.Message;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class JSonChatFileOperations implements ChatFileOperations{
     private static final String MESSAGES_FILE = "./messages.json";
 
     public JSonChatFileOperations(Gson gson) {
-        this.gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+        this.gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer()).registerTypeAdapter(LocalDateTime.class,new LocalDateTimeDeserializer()).create();
     }
 
     @Override
@@ -46,7 +47,7 @@ public class JSonChatFileOperations implements ChatFileOperations{
             String line;
             while((line = bufferedReader.readLine())!=null)
             {
-                jsonText.append(line);
+               // jsonText.append(line);
             }
             reader.close();
             Type targetType = new TypeToken<ArrayList<Message>>(){}.getType();
@@ -58,6 +59,8 @@ public class JSonChatFileOperations implements ChatFileOperations{
             throw new RuntimeException(e);
         }
 
-        return new ArrayList<>();
+        //return new ArrayList<>();
     }
 }
+
+

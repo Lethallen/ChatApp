@@ -16,7 +16,7 @@ public class Message {
     private String username;
     @Expose(serialize = true, deserialize = true)
     private String text;
-    @Expose(serialize = false, deserialize = false)
+    @Expose(serialize = true, deserialize = true)
     private LocalDateTime created;
 
     public Message(String username, String text) {
