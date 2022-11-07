@@ -97,7 +97,9 @@ public class FileChatClient implements ChatClient {
 
     private void addSystemMessage(int type, String username)
     {
+
         messages.add(new Message(type, username));
         raiseEventMessagesChanged();
     }
+
 }

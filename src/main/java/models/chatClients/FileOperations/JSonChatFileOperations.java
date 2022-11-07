@@ -15,7 +15,7 @@ public class JSonChatFileOperations implements ChatFileOperations{
     private Gson gson;
     private static final String MESSAGES_FILE = "./messages.json";
 
-    public JSonChatFileOperations(Gson gson) {
+    public JSonChatFileOperations() {
         this.gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer()).registerTypeAdapter(LocalDateTime.class,new LocalDateTimeDeserializer()).create();
     }
 
@@ -47,7 +47,7 @@ public class JSonChatFileOperations implements ChatFileOperations{
             String line;
             while((line = bufferedReader.readLine())!=null)
             {
-               // jsonText.append(line);
+                jsonText.concat(line);
             }
             reader.close();
             Type targetType = new TypeToken<ArrayList<Message>>(){}.getType();

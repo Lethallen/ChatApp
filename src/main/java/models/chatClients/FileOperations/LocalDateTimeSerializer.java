@@ -12,8 +12,13 @@ import java.time.format.DateTimeFormatter;
 public class LocalDateTimeSerializer implements JsonSerializer {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-DD HH:mm:ss");
 
-    @Override
+
     public JsonElement serialize(LocalDateTime localDateTime, Type type, JsonSerializationContext jsonSerializationContext) {
         return new JsonPrimitive(formatter.format(localDateTime));
+    }
+
+    @Override
+    public JsonElement serialize(Object o, Type type, JsonSerializationContext jsonSerializationContext) {
+        return null;
     }
 }

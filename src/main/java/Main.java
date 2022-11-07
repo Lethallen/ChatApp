@@ -1,5 +1,8 @@
 import com.google.gson.Gson;
+import models.DBS.DbInitializer;
+import models.DBS.JdbcDatabaseOperations;
 import models.GUI.MainFrame;
+import models.Message;
 import models.chatClients.ChatClient;
 import models.chatClients.FileChatClient;
 import models.chatClients.FileOperations.ChatFileOperations;
@@ -11,8 +14,16 @@ public class Main {
 
     public static void main(String[] args)
     {
-        Gson gson = new Gson();
-        ChatFileOperations chatFileOperations = new JSonChatFileOperations(gson);
+        String databaseDriver = "org.apache.derby.jdbc.EmbeddedDriver";
+        String databaseUrl = "jdbc:derby:ChatClientDb_skC";
+        DbInitializer dbInitializer = new DbInitializer(databaseDriver, databaseUrl);
+        //dbInitializer.init();
+
+        try{
+            JdbcDatabaseOperations databaseOperations = new JdbcDatabaseOperations(databaseDriver, databaseUrl);
+            databaseOperations.addMessage(new Message("ano","ano"));
+        }catch(Exception kokotina){}
+        ChatFileOperations chatFileOperations = new JSonChatFileOperations();
         ChatClient chatClient = new FileChatClient(chatFileOperations);
         MainFrame window = new MainFrame (800, 600, chatClient);
 
