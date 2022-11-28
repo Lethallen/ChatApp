@@ -28,6 +28,6 @@ public class JdbcDatabaseOperations implements DatabaseOperationsInterface{
 
     @Override
     public List<Message> getMessages() {
-        return null;
+        return null; //FINISH, loading messages
     }
 }

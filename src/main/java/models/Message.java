@@ -39,7 +39,7 @@ public class Message {
 
     @Override
     public String toString() {
-        if(username.equals(AUTHOR_SYSTEM))
+        if(username.toUpperCase().equals(AUTHOR_SYSTEM.toUpperCase()))
         {
             return text + "\n";
         }
