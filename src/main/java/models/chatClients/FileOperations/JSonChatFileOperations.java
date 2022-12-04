@@ -47,7 +47,7 @@ public class JSonChatFileOperations implements ChatFileOperations{
             String line;
             while((line = bufferedReader.readLine())!=null)
             {
-                jsonText.concat(line);
+               jsonText.concat(line);
             }
             reader.close();
             Type targetType = new TypeToken<ArrayList<Message>>(){}.getType();
@@ -56,10 +56,11 @@ public class JSonChatFileOperations implements ChatFileOperations{
 
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+           throw new RuntimeException(e);
+
         }
 
-        //return new ArrayList<>();
+
     }
 }
 

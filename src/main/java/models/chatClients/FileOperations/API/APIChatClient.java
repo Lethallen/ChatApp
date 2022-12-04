@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import models.Message;
 import models.chatClients.ChatClient;
+import models.chatClients.FileOperations.ChatFileOperations;
+import models.chatClients.FileOperations.JSonChatFileOperations;
 import models.chatClients.FileOperations.LocalDateTimeDeserializer;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -16,6 +18,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +32,15 @@ public class APIChatClient implements ChatClient {
     private List<String> loggedUsers;
     private List<Message> messages;
     private List<ActionListener> listeners = new ArrayList<>();
+    ChatFileOperations chatFileOperations = new JSonChatFileOperations();
 
-    private final String URL = "http://fimuhkpro22021.aspifyhost.cz/";
-    private String token;
+    private final String URL = "http://fimuhkpro22021.aspifyhost.cz";
+    private String token = null;
     private Gson gson;
 
     public APIChatClient(){
         loggedUsers = new ArrayList<>();
-        messages = new ArrayList<>();
+        messages = chatFileOperations.readMessages();
         this.gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer()).registerTypeAdapter(LocalDateTime.class,new LocalDateTimeDeserializer()).create();
         Runnable refreshData = ()->{Thread.currentThread().setName("refreshData");
         try{
@@ -61,7 +65,7 @@ public class APIChatClient implements ChatClient {
         try {
             SendMessageRequest msgRequest = new SendMessageRequest(token,text);
 
-            String url_endpoint = URL + "/api/Chat/Login";
+            String url_endpoint = URL + "/api/Chat/SendMessage";
             HttpPost post = new HttpPost(url_endpoint);
             StringEntity body = new StringEntity(gson.toJson(msgRequest),"utf-8");
             body.setContentType("application/json");
@@ -72,7 +76,8 @@ public class APIChatClient implements ChatClient {
 
             if(response.getStatusLine().getStatusCode()==204)
             {
-                System.out.println("Message Sent");
+                //messages.add(new Message(loggedUser, text));
+                System.out.println("Message Sent: ");
                 refreshMessages();
             }
 
@@ -83,7 +88,6 @@ public class APIChatClient implements ChatClient {
     @Override
     public void login(String userName) {
        try {
-
            String url_endpoint = URL + "/api/Chat/Login";
            HttpPost post = new HttpPost(url_endpoint);
            StringEntity body = new StringEntity("\""+userName+"\"","utf-8");
@@ -96,8 +100,10 @@ public class APIChatClient implements ChatClient {
            if(response.getStatusLine().getStatusCode()==200)
            {
                System.out.println("User Logged In");
+               loggedUser = userName;
                token = EntityUtils.toString(response.getEntity());
                token = token.replace("\"","").trim();
+             //  chatFileOperations.readMessages();
            }
 
        }catch(Exception e){e.printStackTrace();}
@@ -107,7 +113,6 @@ public class APIChatClient implements ChatClient {
     @Override
     public void logout() {
         try {
-
             String url_endpoint = URL + "/api/Chat/Logout";
             HttpPost post = new HttpPost(url_endpoint);
             StringEntity body = new StringEntity("\""+token+"\"","utf-8");
@@ -153,7 +158,8 @@ public class APIChatClient implements ChatClient {
     }
 
     @Override
-    public void addActionListener(ActionListener toAdd) {
+    public void addActionListener(ActionListener toAdd)
+    {
         listeners.add(toAdd);
     }
     private void raiseEventLoggedUsersChanged()
@@ -214,8 +220,11 @@ public class APIChatClient implements ChatClient {
             if(response.getStatusLine().getStatusCode() == 200)
             {
                 String jsonResult = EntityUtils.toString(response.getEntity());
-                messages = gson.fromJson(jsonResult, new TypeToken<ArrayList<Message>>(){}.getType());
+                Type listType = new TypeToken<ArrayList<Message>>(){}.getType();
+                messages = gson.fromJson(jsonResult, listType);
+                System.out.println("Messages refreshed!");
                 raiseEventMessagesChanged();
+                chatFileOperations.writeMessages(messages);
             }
 
 

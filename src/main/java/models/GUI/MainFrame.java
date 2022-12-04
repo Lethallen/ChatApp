@@ -12,10 +12,10 @@ import java.awt.event.ActionListener;
 //ID1 = změna lognutých uživatelů, ID2 = změna zpráv
 
 public class MainFrame extends JFrame {
-    JTextArea txtChatArea = new JTextArea();
+    JTextArea txtChatArea;
     private ChatClient chatClient;
     private JTextField txtInputMessage;
-    private LoggedUsersTableModel loggedUsersTableModel = new LoggedUsersTableModel(chatClient);
+    private LoggedUsersTableModel loggedUsersTableModel;
 
     public MainFrame(int width, int height, ChatClient chatClient){
 
@@ -32,10 +32,11 @@ public class MainFrame extends JFrame {
 
     private void initGUI(){
         JPanel panelMain = new JPanel(new BorderLayout());
-        panelMain.add(initLoginPanel(), BorderLayout.NORTH);
         panelMain.add(initChatPanel(), BorderLayout.CENTER);
+        panelMain.add(initLoginPanel(), BorderLayout.NORTH);
         panelMain.add(initMessagePanel(), BorderLayout.SOUTH);
         panelMain.add(initLoggedUsers(), BorderLayout.EAST);
+
 
 
 
@@ -110,8 +111,8 @@ public class MainFrame extends JFrame {
                 refreshMessages();
             }
         });
-        chatClient.addActionListener(e -> {
-            if(e.getID()==1)
+        chatClient.addActionListener(a -> {
+            if(a.getID()==1)
             {
                 loggedUsersTableModel.fireTableDataChanged();
             }
@@ -127,21 +128,19 @@ public class MainFrame extends JFrame {
         txtInputMessage.setEnabled(false);
         panel.add(txtInputMessage);
 
+
         JButton btnSendMessage = new JButton("Send");
-        btnSendMessage.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Message sent: ");
-                String msgText = txtInputMessage.getText();
-                //txtChatArea.append(msgText + "\n");
-                if(msgText.length()<1)
-                {return;}
-                if(!chatClient.isAuthenticated())
-                {return;}
-                chatClient.sendMessage(msgText);
-                txtInputMessage.setText("");
-                //refreshMessages(); tady to neřešit, jinak by to mohlo hodit null exception
-            }
+        btnSendMessage.addActionListener(e -> {
+            System.out.println("Message sent: ");
+            String msgText = txtInputMessage.getText();
+            txtChatArea.append(msgText + "\n");
+            if(msgText.length()<1)
+            {return;}
+            if(!chatClient.isAuthenticated())
+            {return;}
+            chatClient.sendMessage(msgText);
+            txtInputMessage.setText("");
+            //refreshMessages(); tady to neřešit, jinak by to mohlo hodit null exception
         });
         panel.add(btnSendMessage);
 
@@ -161,7 +160,6 @@ public class MainFrame extends JFrame {
          */
         // JTable tblLoggedUsers = new JTable(data, colNames);
 
-
         JPanel panel = new JPanel();
         JTable tblLoggedUsers = new JTable();
         loggedUsersTableModel = new LoggedUsersTableModel(chatClient);
@@ -178,10 +176,10 @@ public class MainFrame extends JFrame {
 
 
     private void refreshMessages (){
-        if(!chatClient.isAuthenticated())return;
+        if(!chatClient.isAuthenticated()) return;
         txtChatArea.setText("");
-        for(Message msg:
-            chatClient.getMessages()){
+        for(Message msg: chatClient.getMessages())
+        {
             txtChatArea.append(msg.toString());
             txtChatArea.append("\n");
         }

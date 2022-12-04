@@ -10,7 +10,7 @@ public class Message {
 
     public static final int USER_LOGGED_IN = 1;
     public static final int USER_LOGGED_OUT = 2;
-    public static final String AUTHOR_SYSTEM = "System";
+    public static final String AUTHOR_SYSTEM = "SYSTEM";
 
     @Expose(serialize = true, deserialize = true)
     private String username;
@@ -37,14 +37,20 @@ public class Message {
         return created;
     }
 
-    @Override
+
     public String toString() {
-        if(username.toUpperCase().equals(AUTHOR_SYSTEM.toUpperCase()))
+
+        String s = text + " ["+created.toLocalDate()+"]\n";
+        return s;
+    }
+
+    public String toStringBackup() {
+        if(username.toUpperCase().equals(AUTHOR_SYSTEM))
         {
             return text + "\n";
         }
-        String s = username + " ["+created.toLocalTime()+"]\n";
-        s+= text+"\n";
+        String s = username + " ["+created.toLocalDate()+"]\n";
+        s.concat(text+"\n");
         return s;
     }
 

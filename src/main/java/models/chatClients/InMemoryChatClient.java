@@ -16,9 +16,9 @@ public class InMemoryChatClient implements ChatClient {
 
     public InMemoryChatClient(){
         loggedUsers = new ArrayList<>();
-    messages = new ArrayList<>();
+        messages = new ArrayList<>();
 
-}
+    }
 
 
     @Override
